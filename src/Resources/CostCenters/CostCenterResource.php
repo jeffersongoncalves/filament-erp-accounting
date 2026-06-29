@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\CostCenters;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -17,7 +15,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\CostCenters\Tables\CostC
 
 class CostCenterResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleGroup;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
 
     protected static ?int $navigationSort = 2;
 
@@ -37,9 +35,9 @@ class CostCenterResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return CostCenterForm::configure($schema);
+        return CostCenterForm::configure($form);
     }
 
     public static function table(Table $table): Table

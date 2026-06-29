@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\BankAccounts;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -17,7 +15,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\BankAccounts\Tables\Bank
 
 class BankAccountResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCreditCard;
+    protected static ?string $navigationIcon = 'heroicon-o-credit-card';
 
     protected static ?int $navigationSort = 7;
 
@@ -37,9 +35,9 @@ class BankAccountResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return BankAccountForm::configure($schema);
+        return BankAccountForm::configure($form);
     }
 
     public static function table(Table $table): Table
