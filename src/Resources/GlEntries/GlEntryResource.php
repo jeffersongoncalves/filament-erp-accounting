@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\GlEntries;
 
-use BackedEnum;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
@@ -21,7 +19,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\GlEntries\Tables\GlEntri
  */
 class GlEntryResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQueueList;
+    protected static ?string $navigationIcon = 'heroicon-o-queue-list';
 
     protected static ?int $navigationSort = 13;
 
@@ -45,9 +43,9 @@ class GlEntryResource extends Resource
         }
     }
 
-    public static function infolist(Schema $schema): Schema
+    public static function infolist(Infolist $infolist): Infolist
     {
-        return GlEntryInfolist::configure($schema);
+        return GlEntryInfolist::configure($infolist);
     }
 
     public static function table(Table $table): Table

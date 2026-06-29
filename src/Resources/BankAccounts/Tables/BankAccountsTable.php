@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\BankAccounts\Tables;
 
-use Filament\Actions;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -38,11 +38,11 @@ class BankAccountsTable
                 TernaryFilter::make('is_default')
                     ->label('Is Default'),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\PurchaseInvoices;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -19,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\PurchaseInvoices\Tables\
 
 class PurchaseInvoiceResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentMinus;
+    protected static ?string $navigationIcon = 'heroicon-o-document-minus';
 
     protected static ?int $navigationSort = 12;
 
@@ -39,9 +37,9 @@ class PurchaseInvoiceResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return PurchaseInvoiceForm::configure($schema);
+        return PurchaseInvoiceForm::configure($form);
     }
 
     public static function table(Table $table): Table
