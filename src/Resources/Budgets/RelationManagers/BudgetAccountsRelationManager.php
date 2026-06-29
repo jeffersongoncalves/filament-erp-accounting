@@ -1,0 +1,60 @@
+<?php
+
+namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\Budgets\RelationManagers;
+
+use Filament\Actions;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+
+class BudgetAccountsRelationManager extends RelationManager
+{
+    protected static string $relationship = 'accounts';
+
+    protected static ?string $title = 'Budget Accounts';
+
+    public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->columns(2)
+            ->components([
+                Select::make('account_id')
+                    ->label('Account')
+                    ->relationship('account', 'name')
+                    ->searchable()
+                    ->required(),
+                TextInput::make('budget_amount')
+                    ->label('Budget Amount')
+                    ->numeric()
+                    ->required(),
+            ]);
+    }
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->recordTitleAttribute('account_id')
+            ->columns([
+                TextColumn::make('account.name')
+                    ->label('Account')
+                    ->searchable(),
+                TextColumn::make('budget_amount')
+                    ->label('Budget Amount'),
+            ])
+            ->headerActions([
+                Actions\CreateAction::make(),
+            ])
+            ->recordActions([
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
+            ])
+            ->toolbarActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}
