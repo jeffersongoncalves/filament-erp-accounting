@@ -5,19 +5,23 @@ namespace JeffersonGoncalves\FilamentErp\Accounting;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use JeffersonGoncalves\FilamentErp\Accounting\Concerns\HasErpAccountingPluginConfig;
+use JeffersonGoncalves\FilamentErp\Accounting\Resources\AccountingDimensions\AccountingDimensionResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\Accounts\AccountResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\BankAccounts\BankAccountResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\Banks\BankResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\Budgets\BudgetResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\CostCenters\CostCenterResource;
+use JeffersonGoncalves\FilamentErp\Accounting\Resources\Dunnings\DunningResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\GlEntries\GlEntryResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\JournalEntries\JournalEntryResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\ModesOfPayment\ModeOfPaymentResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentEntries\PaymentEntryResource;
+use JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentReconciliations\PaymentReconciliationResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentTerms\PaymentTermResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\PurchaseInvoices\PurchaseInvoiceResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\SalesInvoices\SalesInvoiceResource;
 use JeffersonGoncalves\FilamentErp\Accounting\Resources\TaxTemplates\TaxTemplateResource;
+use JeffersonGoncalves\FilamentErp\Accounting\Resources\TaxWithholdingCategories\TaxWithholdingCategoryResource;
 
 class FilamentErpAccountingPlugin implements Plugin
 {
@@ -44,6 +48,10 @@ class FilamentErpAccountingPlugin implements Plugin
             'sales_invoice' => SalesInvoiceResource::class,
             'purchase_invoice' => PurchaseInvoiceResource::class,
             'gl_entry' => GlEntryResource::class,
+            'tax_withholding_category' => TaxWithholdingCategoryResource::class,
+            'accounting_dimension' => AccountingDimensionResource::class,
+            'payment_reconciliation' => PaymentReconciliationResource::class,
+            'dunning' => DunningResource::class,
         ]));
 
         $panel->widgets($this->resolveWidgets());
