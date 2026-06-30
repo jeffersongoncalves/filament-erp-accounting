@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentEntries;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentEntries\Tables\Pa
 
 class PaymentEntryResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-arrows-right-left';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowsRightLeft;
 
     protected static ?int $navigationSort = 10;
 
@@ -35,9 +37,9 @@ class PaymentEntryResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return PaymentEntryForm::configure($form);
+        return PaymentEntryForm::configure($schema);
     }
 
     public static function table(Table $table): Table
