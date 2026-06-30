@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\PurchaseInvoices\Tables;
 
-use Filament\Actions;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -60,7 +60,7 @@ class PurchaseInvoicesTable
                         2 => 'Cancelled',
                     ]),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make()
                     ->visible(fn ($record) => $record->docstatus === DocStatus::Draft),
                 ...self::submittableRecordActions(),

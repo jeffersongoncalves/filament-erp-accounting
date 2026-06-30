@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\JournalEntries;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\JournalEntries\Tables\Jo
 
 class JournalEntryResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentText;
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?int $navigationSort = 9;
 
@@ -38,9 +36,9 @@ class JournalEntryResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return JournalEntryForm::configure($schema);
+        return JournalEntryForm::configure($form);
     }
 
     public static function table(Table $table): Table
