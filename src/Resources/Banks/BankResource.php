@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\Banks;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\Banks\Tables\BanksTable;
 
 class BankResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingLibrary;
 
     protected static ?int $navigationSort = 6;
 
@@ -35,9 +37,9 @@ class BankResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return BankForm::configure($form);
+        return BankForm::configure($schema);
     }
 
     public static function table(Table $table): Table

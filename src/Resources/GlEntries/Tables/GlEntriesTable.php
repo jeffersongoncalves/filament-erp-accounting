@@ -2,8 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\GlEntries\Tables;
 
+use Filament\Actions;
 use Filament\Forms\Components\DatePicker;
-use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
@@ -59,7 +59,7 @@ class GlEntriesTable
                 TernaryFilter::make('is_cancelled')
                     ->label('Cancelled'),
                 Filter::make('posting_date')
-                    ->form([
+                    ->schema([
                         DatePicker::make('from')->label('From'),
                         DatePicker::make('until')->label('Until'),
                     ])
@@ -75,7 +75,7 @@ class GlEntriesTable
                             );
                     }),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\ViewAction::make(),
             ]);
     }

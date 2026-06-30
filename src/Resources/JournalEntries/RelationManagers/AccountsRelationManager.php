@@ -2,11 +2,11 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\JournalEntries\RelationManagers;
 
+use Filament\Actions;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,11 +16,11 @@ class AccountsRelationManager extends RelationManager
 
     protected static ?string $title = 'Accounts';
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->columns(2)
-            ->schema([
+            ->components([
                 Select::make('account_id')
                     ->label('Account')
                     ->relationship('account', 'name')
@@ -65,11 +65,11 @@ class AccountsRelationManager extends RelationManager
             ->headerActions([
                 Actions\CreateAction::make(),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

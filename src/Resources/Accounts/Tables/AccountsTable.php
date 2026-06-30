@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\Accounts\Tables;
 
-use Filament\Tables\Actions;
+use Filament\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -60,11 +60,11 @@ class AccountsTable
                 TernaryFilter::make('is_group')
                     ->label('Is Group'),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
