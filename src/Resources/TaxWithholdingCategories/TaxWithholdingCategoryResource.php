@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\TaxWithholdingCategories;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Models\TaxWithholdingCategory;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -16,7 +18,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\TaxWithholdingCategories
 
 class TaxWithholdingCategoryResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-receipt-percent';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedReceiptPercent;
 
     protected static ?int $navigationSort = 14;
 
@@ -36,9 +38,9 @@ class TaxWithholdingCategoryResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return TaxWithholdingCategoryForm::configure($form);
+        return TaxWithholdingCategoryForm::configure($schema);
     }
 
     public static function table(Table $table): Table

@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\ModesOfPayment;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\ModesOfPayment\Tables\Mo
 
 class ModeOfPaymentResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBanknotes;
 
     protected static ?int $navigationSort = 4;
 
@@ -35,9 +37,9 @@ class ModeOfPaymentResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return ModeOfPaymentForm::configure($form);
+        return ModeOfPaymentForm::configure($schema);
     }
 
     public static function table(Table $table): Table

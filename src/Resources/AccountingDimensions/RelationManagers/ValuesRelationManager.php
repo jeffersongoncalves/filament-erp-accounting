@@ -2,11 +2,11 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\AccountingDimensions\RelationManagers;
 
+use Filament\Actions;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,11 +16,11 @@ class ValuesRelationManager extends RelationManager
 
     protected static ?string $title = 'Values';
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->columns(2)
-            ->schema([
+            ->components([
                 TextInput::make('value')
                     ->required()
                     ->maxLength(255),
@@ -44,11 +44,11 @@ class ValuesRelationManager extends RelationManager
             ->headerActions([
                 Actions\CreateAction::make(),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
