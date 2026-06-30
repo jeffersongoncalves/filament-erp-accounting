@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentReconciliations;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Models\PaymentReconciliation;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentReconciliations\T
 
 class PaymentReconciliationResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedScale;
+    protected static ?string $navigationIcon = 'heroicon-o-scale';
 
     protected static ?int $navigationSort = 16;
 
@@ -38,9 +36,9 @@ class PaymentReconciliationResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return PaymentReconciliationForm::configure($schema);
+        return PaymentReconciliationForm::configure($form);
     }
 
     public static function table(Table $table): Table

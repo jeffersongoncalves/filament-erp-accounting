@@ -2,11 +2,11 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\PaymentReconciliations\RelationManagers;
 
-use Filament\Actions;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Schemas\Schema;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,11 +16,11 @@ class AllocationsRelationManager extends RelationManager
 
     protected static ?string $title = 'Allocations';
 
-    public function form(Schema $schema): Schema
+    public function form(Form $form): Form
     {
-        return $schema
+        return $form
             ->columns(2)
-            ->components([
+            ->schema([
                 Select::make('payment_entry_id')
                     ->label('Payment Entry')
                     ->relationship('paymentEntry', 'party_name')
@@ -62,11 +62,11 @@ class AllocationsRelationManager extends RelationManager
             ->headerActions([
                 Actions\CreateAction::make(),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

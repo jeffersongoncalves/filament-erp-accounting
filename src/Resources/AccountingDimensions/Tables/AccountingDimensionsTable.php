@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\AccountingDimensions\Tables;
 
-use Filament\Actions;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -37,11 +37,11 @@ class AccountingDimensionsTable
                 TernaryFilter::make('disabled')
                     ->label('Disabled'),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

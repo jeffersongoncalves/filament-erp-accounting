@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\TaxTemplates;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\TaxTemplates\Tables\TaxT
 
 class TaxTemplateResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedReceiptPercent;
+    protected static ?string $navigationIcon = 'heroicon-o-receipt-percent';
 
     protected static ?int $navigationSort = 5;
 
@@ -38,9 +36,9 @@ class TaxTemplateResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return TaxTemplateForm::configure($schema);
+        return TaxTemplateForm::configure($form);
     }
 
     public static function table(Table $table): Table

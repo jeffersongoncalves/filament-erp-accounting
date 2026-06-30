@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\Dunnings;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Models\Dunning;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\Dunnings\Tables\Dunnings
 
 class DunningResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBellAlert;
+    protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
 
     protected static ?int $navigationSort = 17;
 
@@ -38,9 +36,9 @@ class DunningResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return DunningForm::configure($schema);
+        return DunningForm::configure($form);
     }
 
     public static function table(Table $table): Table

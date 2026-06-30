@@ -1,6 +1,5 @@
 <?php
 
-use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Accounting\Enums\AccountType;
 use JeffersonGoncalves\Erp\Accounting\Enums\RootType;
 use JeffersonGoncalves\Erp\Accounting\Models\Account;
@@ -76,7 +75,7 @@ it('submits a payment reconciliation and reduces the invoice outstanding amount'
     ]);
 
     Livewire::test(ListPaymentReconciliations::class)
-        ->callAction(TestAction::make('submit')->table($reconciliation));
+        ->callTableAction('submit', $reconciliation);
 
     expect($reconciliation->refresh()->docstatus)->toBe(DocStatus::Submitted)
         ->and((float) $invoice->refresh()->outstanding_amount)->toBe(300.0);

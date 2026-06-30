@@ -1,6 +1,5 @@
 <?php
 
-use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Accounting\Models\Account;
 use JeffersonGoncalves\Erp\Accounting\Models\GlEntry;
 use JeffersonGoncalves\Erp\Accounting\Models\JournalEntry;
@@ -47,7 +46,7 @@ it('submits a balanced journal entry through the table action and posts the ledg
     $entry = makeJournalEntry(100, 100);
 
     Livewire::test(ListJournalEntries::class)
-        ->callAction(TestAction::make('submit')->table($entry));
+        ->callTableAction('submit', $entry);
 
     expect($entry->refresh()->docstatus)->toBe(DocStatus::Submitted)
         ->and(GlEntry::query()->count())->toBe(2)
@@ -59,7 +58,7 @@ it('does not post the ledger when submitting an unbalanced journal entry', funct
     $entry = makeJournalEntry(100, 60);
 
     Livewire::test(ListJournalEntries::class)
-        ->callAction(TestAction::make('submit')->table($entry))
+        ->callTableAction('submit', $entry)
         ->assertNotified();
 
     expect(GlEntry::query()->count())->toBe(0);

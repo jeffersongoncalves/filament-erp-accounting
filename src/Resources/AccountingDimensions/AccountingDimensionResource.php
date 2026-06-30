@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\AccountingDimensions;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Accounting\Models\AccountingDimension;
 use JeffersonGoncalves\FilamentErp\Accounting\FilamentErpAccountingPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Accounting\Resources\AccountingDimensions\Tab
 
 class AccountingDimensionResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSquares2x2;
+    protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
 
     protected static ?int $navigationSort = 15;
 
@@ -38,9 +36,9 @@ class AccountingDimensionResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return AccountingDimensionForm::configure($schema);
+        return AccountingDimensionForm::configure($form);
     }
 
     public static function table(Table $table): Table

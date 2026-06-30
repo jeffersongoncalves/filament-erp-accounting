@@ -2,18 +2,18 @@
 
 namespace JeffersonGoncalves\FilamentErp\Accounting\Resources\TaxWithholdingCategories\Schemas;
 
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
+use Filament\Forms\Form;
 
 class TaxWithholdingCategoryForm
 {
-    public static function configure(Schema $schema): Schema
+    public static function configure(Form $form): Form
     {
-        return $schema
+        return $form
             ->columns(null)
-            ->components([
+            ->schema([
                 Section::make('Details')
                     ->schema([
                         TextInput::make('name')

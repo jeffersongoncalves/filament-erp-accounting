@@ -1,6 +1,5 @@
 <?php
 
-use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Accounting\Enums\AccountType;
 use JeffersonGoncalves\Erp\Accounting\Enums\RootType;
 use JeffersonGoncalves\Erp\Accounting\Models\Account;
@@ -72,7 +71,7 @@ it('submits a dunning with interest through the table action and posts the ledge
     ]);
 
     Livewire::test(ListDunnings::class)
-        ->callAction(TestAction::make('submit')->table($dunning));
+        ->callTableAction('submit', $dunning);
 
     expect($dunning->refresh()->docstatus)->toBe(DocStatus::Submitted)
         ->and(GlEntry::query()->count())->toBe(2)
